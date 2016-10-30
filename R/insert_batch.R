@@ -21,7 +21,9 @@ create_empty_table <- function(con, tn, df) {
 
 }
 
-insert_batch <- function(con, table_name, df,size=100L) {
+insert_batch <- function(con, table_name, df, size=100L) {
+
+  create_empty_table(con, table_name, df)
 
   if (nrow(df)==0L) return(invisible());
 
