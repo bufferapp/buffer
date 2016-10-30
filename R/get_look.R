@@ -11,6 +11,9 @@
 
 
 run_look <- function(look_id, format = 'csv', token) {
+
+  require(httr)
+
   GET(modify_url("https://looker.buffer.com:19999",
                  path = paste('api', '3.0', 'looks', look_id, 'run','csv', sep = '/')) ,
       add_headers(Authorization = paste('token', token), Accept = 'text'))
