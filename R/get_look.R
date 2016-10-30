@@ -9,6 +9,17 @@
 #' @section Warning:
 #' Do not operate heavy machinery within 8 hours of using this function.
 
+check_looker_credentials <- function() {
+
+  if(Sys.getenv("LOOKER_API3_CLIENT_ID") == "" | Sys.getenv("LOOKER_API3_CLIENT_SECRET") == "") {
+    client_id <- readline(prompt="Enter your Looker client id: ")
+    client_secret <- readline(prompt="Enter your Looker client secret: ")
+    Sys.setenv(LOOKER_API3_CLIENT_ID = client_id)
+    Sys.setenv(LOOKER_API3_CLIENT_SECRET = client_secret)
+  } else {
+    print("Your Looker credentials are set in your .Renviron file. You're all good.")
+  }
+}
 
 run_look <- function(look_id, format = 'csv', token) {
 
@@ -30,6 +41,8 @@ looker_connect <- function() {
 }
 
 get_look <- function(look_id) {
+
+  check_looker_credentials()
 
   looker <- looker_connect()
   token <- content(looker)$access_token
