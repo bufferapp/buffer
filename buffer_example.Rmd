@@ -55,4 +55,18 @@ insert_batch(con, "buffer_test_table_delete", df)
 query_db("select * from buffer_test_table_delete limit 20", con)
 ```
 
+Now let's delete that dummy table. :)
+
+```{r}
+query_db("drop table buffer_test_table_delete", con)
+```
+
+## Get data from Looker
+The `get_look` function returns data in the form of a data frame, given a `look_id`.
+
+```{r message=FALSE, warning=FALSE}
+look_id <- 2528
+looker_data <- get_look(look_id)
+looker_data
+```
 
