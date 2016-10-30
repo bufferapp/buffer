@@ -8,7 +8,10 @@
 #' @examples
 #' df <- get_look(3161)
 
-check_looker_credentials <- function() {
+
+get_look <- function(look_id) {
+
+  require(httr)
 
   if(Sys.getenv("LOOKER_API3_CLIENT_ID") == "" | Sys.getenv("LOOKER_API3_CLIENT_SECRET") == "") {
     client_id <- readline(prompt="Enter your Looker client id: ")
@@ -18,35 +21,19 @@ check_looker_credentials <- function() {
   } else {
     print("Your Looker credentials are set in your .Renviron file. You're all good.")
   }
-}
-
-run_look <- function(look_id, format = 'csv', token) {
-
-  require(httr)
-
-  GET(modify_url("https://looker.buffer.com:19999",
-                 path = paste('api', '3.0', 'looks', look_id, 'run','csv', sep = '/')) ,
-      add_headers(Authorization = paste('token', token), Accept = 'text'))
-}
-
-looker_connect <- function() {
 
   client_id = Sys.getenv("LOOKER_API3_CLIENT_ID")
   secret = Sys.getenv("LOOKER_API3_CLIENT_SECRET")
   base_url = "https://looker.buffer.com:19999"
 
-  POST(modify_url(base_url, path='login', query =list(client_id=client_id, client_secret=secret)))
-
-}
-
-get_look <- function(look_id) {
-
-  check_looker_credentials()
-
-  looker <- looker_connect()
+  looker <- POST(modify_url(base_url, path='login', query =list(client_id=client_id, client_secret=secret)))
   token <- content(looker)$access_token
 
-  look <- run_look(look_id, 'csv', token)
+  look <- GET(modify_url("https://looker.buffer.com:19999",
+                         path = paste('api', '3.0', 'looks', look_id, 'run','csv', sep = '/')) ,
+              add_headers(Authorization = paste('token', token), Accept = 'text'))
+
+
   con <- textConnection(content(look))
   df <- read.csv(con, header = T)
 
