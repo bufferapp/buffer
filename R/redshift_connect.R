@@ -8,7 +8,6 @@
 #' @export
 #' @examples
 #' conn <- redshift_connect()
-#' \dontrun{redshift_connect()} won't really help, because you need to assign it.
 #' @section Warning:
 #' Do not operate heavy machinery within 8 hours of using this function.
 

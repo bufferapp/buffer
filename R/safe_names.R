@@ -7,8 +7,6 @@
 #' @export
 #' @examples
 #' colnames(df) <- safe_names(colnames(df))
-#' @section Warning:
-#' Do not operate heavy machinery within 8 hours of using this function.
 
 safe_names = function(names) {
   names = gsub('[^a-z0-9]+','_',tolower(names))

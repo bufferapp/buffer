@@ -7,8 +7,6 @@
 #' @export
 #' @examples
 #' df <- get_look(3161)
-#' @section Warning:
-#' Do not operate heavy machinery within 8 hours of using this function.
 
 check_looker_credentials <- function() {
 

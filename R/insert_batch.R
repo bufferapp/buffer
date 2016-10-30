@@ -10,8 +10,6 @@
 #' @examples
 #' con <- redshift_connect()
 #' insert_batch(con, "mrr_forecast", forecast_df);
-#' @section Warning:
-#' Do not operate heavy machinery within 8 hours of using this function.
 
 ## Define helper functions
 create_empty_table <- function(con, tn, df) {

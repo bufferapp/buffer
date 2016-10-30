@@ -15,10 +15,6 @@ A dataframe containing data from a Look.
 \description{
 \code{get_look(look_id)} returns a PostgreSQL connection.
 }
-\section{Warning}{
-
-Do not operate heavy machinery within 8 hours of using this function.
-}
 \examples{
 df <- get_look(3161)
 }

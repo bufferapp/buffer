@@ -15,10 +15,6 @@ A list of nicely formatted names.
 \description{
 \code{colnames(df) <- safe_names(colnames(df))} sets columns names to nice format.
 }
-\section{Warning}{
-
-Do not operate heavy machinery within 8 hours of using this function.
-}
 \examples{
 colnames(df) <- safe_names(colnames(df))
 }

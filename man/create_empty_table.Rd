@@ -19,10 +19,6 @@ A new or updated RS table.
 \description{
 \code{insert_batch(con, table_name, df)} writes the data frame into Redshift.
 }
-\section{Warning}{
-
-Do not operate heavy machinery within 8 hours of using this function.
-}
 \examples{
 con <- redshift_connect()
 insert_batch(con, "mrr_forecast", forecast_df);
