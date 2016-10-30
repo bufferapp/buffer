@@ -6,6 +6,7 @@
 #' @param df Data frame to write.
 #' @return A new or updated RS table.
 #' @keywords write, buffer, redshift
+#' @export
 #' @examples
 #' con <- redshift_connect()
 #' insert_batch(con, "mrr_forecast", forecast_df);

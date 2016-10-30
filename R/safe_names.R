@@ -4,6 +4,7 @@
 #' @param names The column names that you wish to transform.
 #' @return A list of nicely formatted names.
 #' @keywords columns, format, safe
+#' @export
 #' @examples
 #' colnames(df) <- safe_names(colnames(df))
 #' @section Warning:

@@ -5,6 +5,7 @@
 #' @param BUFFER_REDSHIFT_PWD Your Buffer redshift password.
 #' @return The PostgreSQL connection.
 #' @keywords connect, buffer, redshift
+#' @export
 #' @examples
 #' conn <- redshift_connect()
 #' \dontrun{redshift_connect()} won't really help, because you need to assign it.

@@ -4,6 +4,7 @@
 #' @param look_id The numeric id of a Look found in its URL.
 #' @return A dataframe containing data from a Look.
 #' @keywords looker
+#' @export
 #' @examples
 #' df <- get_look(3161)
 #' @section Warning:
