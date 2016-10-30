@@ -22,7 +22,7 @@ library(buffer)
 ```
 
 ## Connecting to Redshift
-Use the `redshift_connect()` function to connect to Redshift. You will need to set your credentials as environment variables first.
+Use the `redshift_connect()` function to connect to Redshift. You will need to set your credentials as environment variables first, if you haven't already.
 
 ```{r}
 # Sys.setenv(BUFFER_REDSHIFT_USER = "xxxxxxxxx")
@@ -40,10 +40,19 @@ users
 ```
 
 ### Write data into Redshift
-This could be very helpful to write model results back into Redshift, but we will just use some dummy data in this particular example. Use caution with this one! In addition, the process is slow, especially for lots of data. The function "batches" the dataframe and writes it in incrementally with a `INSERT INTO
+This could be very helpful to write model results back into Redshift, but we will just use some dummy data in this particular example. Use caution with this one! In addition, the process is slow, especially for lots of data. The function creates a new table and "batches" the dataframe and writes it in incrementally with a `INSERT INTO` statement.
 
 ```{r}
+# Generate dunny data
+num_columns <- 1e2L
+num_rows <- 1e3L 
+df <- as.data.frame(replicate(num_columns, runif(num_rows)))
 
+# Write dummy data to Redshift
+insert_batch(con, "buffer_test_table_delete", df)
+
+# Query new table
+query_db("select * from buffer_test_table_delete limit 20", con)
 ```
 
 
