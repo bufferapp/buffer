@@ -13,7 +13,7 @@
 
 insert_batch <- function(con, table_name, df, size=100L) {
 
-  sql <- paste0("create table \"",tn,"\" (",paste0(collapse=',','"',names(df),'" ',sapply(df[0,],postgresqlDataType)),");")
+  sql <- paste0("create table \"",table_name,"\" (",paste0(collapse=',','"',names(df),'" ',sapply(df[0,],postgresqlDataType)),");")
   print(sql)
 
   dbSendQuery(con,sql)
