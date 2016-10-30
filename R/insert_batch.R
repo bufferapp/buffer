@@ -19,6 +19,7 @@ create_empty_table <- function(con, tn, df) {
 
   dbSendQuery(con,sql)
   invisible()
+
 }
 
 insert_batch <- function(con, table_name, df,size=100L) {
