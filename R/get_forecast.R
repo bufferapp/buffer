@@ -30,7 +30,7 @@ get_forecast <- function(df, days, seasonality) {
     df <- df %>% filter(value > 10) %>% arrange(date)
 
     # Create time series object
-    ts <- ts(df$value,frequency=seasonality)
+    ts <- ts(df$value,frequency = seasonality)
     etsfit <- ets(ts)
 
     # Create forecast object
@@ -44,6 +44,14 @@ get_forecast <- function(df, days, seasonality) {
 
     fcast_df$date <- min(df$date) + as.numeric(time(fcast$mean) * seasonality) - seasonality
     fcast_df$forecast_date <- max(df$date)
+
+    # For data frames that go into the future
+    if (max(df$date) > Sys.Date()) {
+      future_df <- df %>% filter(date > Sys.Date())
+      colnames(future_df) <- c('date','forecast')
+
+      fcast_df <- bind_rows(filter(fcast_df, !(date %in% future_df$date)), future_df)
+    }
 
     fcast_df
   }
