@@ -34,7 +34,7 @@ buffer_theme <- function() {
     theme(panel.grid.minor=element_blank()) +
     theme(axis.ticks=element_blank()) +
     theme(panel.grid.major.x = element_blank(),panel.grid.minor.x = element_blank()) +
-    theme(panel.border = element_blank(), axis.line = element_line(color=color.grid.major)) +
+    # theme(panel.border = element_blank(), axis.line = element_line(color=color.grid.major)) +
 
     # Format the legend, but hide by default
     theme(legend.background = element_rect(fill=NA)) +
@@ -48,6 +48,6 @@ buffer_theme <- function() {
     theme(axis.title.y=element_text(size=15,color=color.axis.title, vjust=1.25)) +
 
     # Plot margins
-    theme(plot.margin = unit(c(0.35, 0.2, 0.3, 0.35), "cm")) +
+    #theme(plot.margin = unit(c(0.35, 0.2, 0.3, 0.35), "cm")) +
     theme(text = element_text(size=25))
 }
