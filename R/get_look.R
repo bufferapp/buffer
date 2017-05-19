@@ -14,12 +14,14 @@ get_look <- function(look_id) {
   require(httr)
 
   if(Sys.getenv("LOOKER_API3_CLIENT_ID") == "" | Sys.getenv("LOOKER_API3_CLIENT_SECRET") == "") {
+
     client_id <- readline(prompt="Enter your Looker client id: ")
     client_secret <- readline(prompt="Enter your Looker client secret: ")
     Sys.setenv(LOOKER_API3_CLIENT_ID = client_id)
     Sys.setenv(LOOKER_API3_CLIENT_SECRET = client_secret)
+
   } else {
-    print("Your Looker credentials are set in your .Renviron file. You're all good.")
+
   }
 
   client_id = Sys.getenv("LOOKER_API3_CLIENT_ID")
