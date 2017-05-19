@@ -25,4 +25,3 @@ forecasts <- get_forecast(df, days = 30, seasonality = 7)
 \keyword{forecast,}
 \keyword{series}
 \keyword{time}
-

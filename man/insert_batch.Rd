@@ -26,4 +26,3 @@ insert_batch(con, "mrr_forecast", forecast_df);
 \keyword{buffer,}
 \keyword{redshift}
 \keyword{write,}
-

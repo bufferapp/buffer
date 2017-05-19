@@ -15,4 +15,3 @@ ggplot(mtcars, aes(x = weight)) + geom_histogram() + buffer_theme()
 \keyword{ggplot,}
 \keyword{plot,}
 \keyword{theme}
-

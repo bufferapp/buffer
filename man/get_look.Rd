@@ -19,4 +19,3 @@ A dataframe containing data from a Look.
 df <- get_look(3161)
 }
 \keyword{looker}
-

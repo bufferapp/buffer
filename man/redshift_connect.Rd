@@ -21,10 +21,10 @@ The PostgreSQL connection.
 
 Do not operate heavy machinery within 8 hours of using this function.
 }
+
 \examples{
 conn <- redshift_connect()
 }
 \keyword{buffer,}
 \keyword{connect,}
 \keyword{redshift}
-

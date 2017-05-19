@@ -21,4 +21,3 @@ colnames(df) <- safe_names(colnames(df))
 \keyword{columns,}
 \keyword{format,}
 \keyword{safe}
-

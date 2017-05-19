@@ -23,4 +23,3 @@ plans <- query_db(query=query, connection = conn)
 \keyword{connect,}
 \keyword{query}
 \keyword{redshift,}
-
