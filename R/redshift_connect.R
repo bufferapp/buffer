@@ -16,19 +16,18 @@ redshift_connect <- function() {
   require(DBI)
   require(RPostgreSQL)
 
-  if(Sys.getenv("BUFFER_REDSHIFT_USER") == "" | Sys.getenv("BUFFER_REDSHIFT_PWD") == "") {
+  if(Sys.getenv("REDSHIFT_USER") == "" | Sys.getenv("REDSHIFT_PASSWORD") == "") {
     user <- readline(prompt="Enter your Redshift user: ")
     pwd <- readline(prompt="Enter your Redshift password: ")
-    Sys.setenv(BUFFER_REDSHIFT_USER = user)
-    Sys.setenv(BUFFER_REDSHIFT_PWD = pwd)
-  } else {
-    print("Your Redshift credentials are set in your .Renviron file. You're all good.")
+    Sys.setenv(REDSHIFT_USER = user)
+    Sys.setenv(REDSHIFT_PASSWORD = pwd)
   }
 
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, host="buffer-metrics.cgbexruym8z7.us-east-1.redshift.amazonaws.com",
-                   port="5439",
-                   dbname="buffermetrics",
+  con <- dbConnect(drv,
+                   host=Sys.getenv("REDSHIFT_ENDPOINT"),
+                   port=Sys.getenv("REDSHIFT_DB_PORT"),
+                   dbname=Sys.getenv("REDSHIFT_DB_NAME"),
                    user=Sys.getenv("BUFFER_REDSHIFT_USER"),
                    password=Sys.getenv("BUFFER_REDSHIFT_PWD"))
 
