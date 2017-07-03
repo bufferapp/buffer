@@ -28,8 +28,8 @@ redshift_connect <- function() {
                    host=Sys.getenv("REDSHIFT_ENDPOINT"),
                    port=Sys.getenv("REDSHIFT_DB_PORT"),
                    dbname=Sys.getenv("REDSHIFT_DB_NAME"),
-                   user=Sys.getenv("BUFFER_REDSHIFT_USER"),
-                   password=Sys.getenv("BUFFER_REDSHIFT_PWD"))
+                   user=Sys.getenv("REDSHIFT_USER"),
+                   password=Sys.getenv("REDSHIFT_PASSWORD"))
 
   con
 }
