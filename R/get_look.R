@@ -6,17 +6,14 @@
 #' @keywords looker
 #' @export
 #' @examples
-#' client_id <- Sys.getenv("LOOKER_API3_CLIENT_ID")
-#' client_secret <- Sys.getenv("LOOKER_API3_CLIENT_SECRET")
-#' df <- get_look(3990, client_id, client_secret)
+#' df <- get_look(3161)
 
 
-get_look <- function(look_id, id = Sys.getenv("LOOKER_API3_CLIENT_ID"),
-                     secret = Sys.getenv("LOOKER_API3_CLIENT_SECRET")) {
+get_look <- function(look_id) {
 
   require(httr)
 
-  if(id == "" | secret == "") {
+  if(Sys.getenv("LOOKER_API3_CLIENT_ID") == "" | Sys.getenv("LOOKER_API3_CLIENT_SECRET") == "") {
 
     client_id <- readline(prompt="Enter your Looker client id: ")
     client_secret <- readline(prompt="Enter your Looker client secret: ")
@@ -27,8 +24,8 @@ get_look <- function(look_id, id = Sys.getenv("LOOKER_API3_CLIENT_ID"),
 
   }
 
-  client_id = id
-  secret = secret
+  client_id = Sys.getenv("LOOKER_API3_CLIENT_ID")
+  secret = Sys.getenv("LOOKER_API3_CLIENT_SECRET")
   base_url = "https://looker.buffer.com:19999"
 
   looker <- POST(modify_url(base_url, path='login', query =list(client_id=client_id, client_secret=secret)))

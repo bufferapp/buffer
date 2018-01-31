@@ -13,9 +13,6 @@
 
 redshift_connect <- function() {
 
-  require(DBI)
-  require(RPostgreSQL)
-
   if(Sys.getenv("REDSHIFT_USER") == "" | Sys.getenv("REDSHIFT_PASSWORD") == "") {
     user <- readline(prompt="Enter your Redshift user: ")
     pwd <- readline(prompt="Enter your Redshift password: ")

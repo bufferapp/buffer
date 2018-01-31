@@ -4,8 +4,7 @@
 \alias{get_look}
 \title{Return data from a Look}
 \usage{
-get_look(look_id, id = Sys.getenv("LOOKER_API3_CLIENT_ID"),
-  secret = Sys.getenv("LOOKER_API3_CLIENT_SECRET"))
+get_look(look_id)
 }
 \arguments{
 \item{look_id}{The numeric id of a Look found in its URL.}
@@ -17,8 +16,6 @@ A dataframe containing data from a Look.
 \code{get_look(look_id)} returns a PostgreSQL connection.
 }
 \examples{
-client_id <- Sys.getenv("LOOKER_API3_CLIENT_ID")
-client_secret <- Sys.getenv("LOOKER_API3_CLIENT_SECRET")
-df <- get_look(3990, client_id, client_secret)
+df <- get_look(3161)
 }
 \keyword{looker}
