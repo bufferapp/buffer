@@ -17,6 +17,11 @@
 
 write_to_redshift <- function(df, table_name, bucket_name, option = "replace", keys = NULL) {
 
+  library(DBI)
+  library(RPostgres)
+  library(aws.s3)
+  library(redshiftTools)
+
   if(Sys.getenv("REDSHIFT_USER") == "" | Sys.getenv("REDSHIFT_PASSWORD") == "") {
 
     user <- readline(prompt="Enter your Redshift user: ")
