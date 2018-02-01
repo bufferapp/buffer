@@ -5,15 +5,17 @@
 #' @param bucket_name The name of the s3 bucket.
 #' @param table_name The name of the Redshift table.
 #' @param option Determine whehter you want to replace or append table.
+#' @param keys Keys to search for matching rows when upserting data.
 #' @return Doesn't return anything. Writes data to Redshift
 #' @keywords connect, buffer, redshift, write.
 #' @export
 #' @examples
 #' write_to_redshift(my_data, "redshift_table_name", "new_bucket_name", "replace")
+#' write_to_redshift(my_data, "redshift_table_name", "new_bucket_name", "upsert", keys = c('id', 'date'))
 #' @section Warning:
 #' Do not operate heavy machinery within 8 hours of using this function.
 
-write_to_redshift <- function(df, table_name, bucket_name, option = "replace") {
+write_to_redshift <- function(df, table_name, bucket_name, option = "replace", keys = NULL) {
 
   if(Sys.getenv("REDSHIFT_USER") == "" | Sys.getenv("REDSHIFT_PASSWORD") == "") {
 
@@ -33,8 +35,7 @@ write_to_redshift <- function(df, table_name, bucket_name, option = "replace") {
 
   }
 
-  drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv,
+  con <- dbConnect(RPostgres::Postgres(),
                    host=Sys.getenv("REDSHIFT_ENDPOINT"),
                    port=Sys.getenv("REDSHIFT_DB_PORT"),
                    dbname=Sys.getenv("REDSHIFT_DB_NAME"),
@@ -63,9 +64,20 @@ write_to_redshift <- function(df, table_name, bucket_name, option = "replace") {
     # replace Redshift table
     r <- rs_replace_table(df,
                           dbcon = con,
-                          table_name = 'manual_payment_invoices',
-                          bucket = "manual-payments",
+                          table_name = table_name,
+                          bucket = bucket_name,
                           region = "us-east-2",
                           split_files = 1)
+
+  } else if(option == "upsert") {
+
+    # upsert
+    c = rs_upsert_table(df,
+                        dbcon = con,
+                        table_name = table_name,
+                        bucket = bucket_name,
+                        region = "us-east-2",
+                        split_files = 1,
+                        keys = keys)
   }
 }
