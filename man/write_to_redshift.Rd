@@ -4,7 +4,8 @@
 \alias{write_to_redshift}
 \title{Replace a table in Redshift.}
 \usage{
-write_to_redshift(df, table_name, bucket_name, option = "replace")
+write_to_redshift(df, table_name, bucket_name, option = "replace",
+  keys = NULL)
 }
 \arguments{
 \item{df}{The R dataframe you want to write to Redshift}
@@ -14,12 +15,14 @@ write_to_redshift(df, table_name, bucket_name, option = "replace")
 \item{bucket_name}{The name of the s3 bucket.}
 
 \item{option}{Determine whehter you want to replace or append table.}
+
+\item{keys}{Keys to search for matching rows when upserting data.}
 }
 \value{
 Doesn't return anything. Writes data to Redshift
 }
 \description{
-\code{redshift_connect} returns a PostgreSQL connection.
+\code{write_to_redshift(df, table_name, bucket_name, option, keys)} writes an R dataframe to Redshift.
 }
 \section{Warning}{
 
@@ -28,6 +31,7 @@ Do not operate heavy machinery within 8 hours of using this function.
 
 \examples{
 write_to_redshift(my_data, "redshift_table_name", "new_bucket_name", "replace")
+write_to_redshift(my_data, "redshift_table_name", "new_bucket_name", "upsert", keys = c('id', 'date'))
 }
 \keyword{buffer,}
 \keyword{connect,}

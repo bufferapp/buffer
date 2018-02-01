@@ -1,6 +1,6 @@
 #' Replace a table in Redshift.
 #'
-#' \code{redshift_connect} returns a PostgreSQL connection.
+#' \code{write_to_redshift(df, table_name, bucket_name, option, keys)} writes an R dataframe to Redshift.
 #' @param df The R dataframe you want to write to Redshift
 #' @param bucket_name The name of the s3 bucket.
 #' @param table_name The name of the Redshift table.
