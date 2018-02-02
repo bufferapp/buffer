@@ -13,6 +13,9 @@
 
 redshift_connect <- function() {
 
+  library(DBI)
+  library(RPostgres)
+
   if(Sys.getenv("REDSHIFT_USER") == "" | Sys.getenv("REDSHIFT_PASSWORD") == "") {
     user <- readline(prompt="Enter your Redshift user: ")
     pwd <- readline(prompt="Enter your Redshift password: ")
@@ -20,8 +23,7 @@ redshift_connect <- function() {
     Sys.setenv(REDSHIFT_PASSWORD = pwd)
   }
 
-  drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv,
+  con <- dbConnect(RPostgres::Postgres(),
                    host=Sys.getenv("REDSHIFT_ENDPOINT"),
                    port=Sys.getenv("REDSHIFT_DB_PORT"),
                    dbname=Sys.getenv("REDSHIFT_DB_NAME"),
