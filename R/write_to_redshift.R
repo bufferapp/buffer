@@ -7,7 +7,7 @@
 #' @param option Determine whehter you want to replace or append table.
 #' @param keys Keys to search for matching rows when upserting data.
 #' @return Doesn't return anything. Writes data to Redshift
-#' @keywords connect, buffer, redshift, write.
+#' @keywords buffer, redshift, write.
 #' @export
 #' @examples
 #' write_to_redshift(my_data, "redshift_table_name", "new_bucket_name", "replace")

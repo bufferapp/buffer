@@ -34,6 +34,5 @@ write_to_redshift(my_data, "redshift_table_name", "new_bucket_name", "replace")
 write_to_redshift(my_data, "redshift_table_name", "new_bucket_name", "upsert", keys = c('id', 'date'))
 }
 \keyword{buffer,}
-\keyword{connect,}
 \keyword{redshift,}
 \keyword{write.}
