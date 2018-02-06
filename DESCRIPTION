@@ -16,6 +16,5 @@ Imports:
     tidyr,
     httr,
     aws.s3,
-    redshiftTools,
     RPostgres
 RoxygenNote: 6.0.1
