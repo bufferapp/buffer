@@ -36,7 +36,7 @@ write_to_redshift <- function(df, table_name, bucket_name, option = "replace", k
     key_id <- readline(prompt = "Enter your AWS access key: ")
     secret_key <- readline(prompt = "Enter your AWS secret access key: ")
     Sys.setenv(AWS_ACCESS_KEY_ID = key_id)
-    Sys.setenv(AWS_SECRET_ACCESS_KEY = secret_keu)
+    Sys.setenv(AWS_SECRET_ACCESS_KEY = secret_key)
 
   }
 
