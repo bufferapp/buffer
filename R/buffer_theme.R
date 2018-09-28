@@ -1,53 +1,35 @@
-#' A function to apply a Buffer theme to a ggplot2 plot.
+#' Minimal ggplot2 theme using the Roboto Condensed font
 #'
-#' This applies the Buffer theme to your plot.
-#' @keywords ggplot, plot, theme
-#' @export
+#' @param base_size base font size
+#' @param strip_text_size,strip_text_margin plot strip text size and margin
+#' @param subtitle_size,subtitle_margin plot subtitle size and margin
+#' @param plot_title_size,plot_title_margin plot title size and margin
+#' @param ... Other arguments passed to \code{theme_minimal}
+#'
+#' @details The Roboto Condensed and Roboto Bold fonts are both Google fonts;
+#' they can be found at \url{https://fonts.google.com/specimen/Roboto+Condensed}
+#' and \url{https://fonts.google.com/specimen/Roboto}. These fonts must be
+#' installed locally on your computer for this theme to work.
+#'
 #' @examples
-#' ggplot(mtcars, aes(x = weight)) + geom_histogram() + buffer_theme()
-
+#' \dontrun{
+#' library(ggplot2)
+#'
+#' ggplot(mtcars, aes(wt, mpg)) +
+#'     geom_point() +
+#'     labs(title = "A Lovely Plot",
+#'          subtitle = "What can the subtitle tell us?") +
+#'     buffer_theme()
+#'}
+#'
+#' @export
 buffer_theme <- function() {
-  
-  require(ggplot2)
-  require(RColorBrewer)
-  
-  buffer_palette <- c("#3c5a72", "#547c9f", "#6295c0", "#72b0e3")
-  
-  # Generate the colors for the chart procedurally with RColorBrewer
-  palette <- brewer.pal("Greys", n=9)
-  color.background = palette[2]
-  color.grid.major = palette[3]
-  color.axis.text = palette[6]
-  color.axis.title = palette[7]
-  color.title = palette[9]
-  
-  # Begin construction of chart
-  theme_bw(base_size=9) +
-    
-  # Set the entire chart region to a light gray color
-  theme(panel.background=element_rect(fill=NA, color=NA)) +
-  theme(plot.background=element_rect(fill=NA, color=NA)) +
-  theme(panel.border=element_rect(color=NA)) +
-    
-  # Format the grid
-  theme(panel.grid.major=element_line(color=color.grid.major,size=.25)) +
-  theme(panel.grid.minor=element_blank()) +
-  theme(axis.ticks=element_blank()) +
-  theme(panel.grid.major.x = element_blank(),panel.grid.minor.x = element_blank()) +
-  # theme(panel.border = element_blank(), axis.line = element_line(color=color.grid.major)) +
-    
-  # Format the legend, but hide by default
-  theme(legend.background = element_rect(fill=NA)) +
-  theme(legend.text = element_text(size=15,color=color.axis.title)) +
-    
-  # Set title and axis labels, and format these and tick marks
-  theme(plot.title=element_text(color=color.title, size=20, vjust=1.25)) +
-  theme(axis.text.x=element_text(size=10,color=color.axis.text)) +
-  theme(axis.text.y=element_text(size=10,color=color.axis.text)) +
-  theme(axis.title.x=element_text(size=15,color=color.axis.title, vjust=0)) +
-  theme(axis.title.y=element_text(size=15,color=color.axis.title, vjust=1.25)) +
-    
-  # Plot margins
-  #theme(plot.margin = unit(c(0.35, 0.2, 0.3, 0.35), "cm")) +
-  theme(text = element_text(size=25))
+  theme_minimal(base_family = "Roboto Condensed") +
+    theme(plot.title = element_text(size = rel(1.5), face = "bold"),
+          plot.subtitle = element_text(size = rel(1.1)),
+          plot.caption = element_text(color = "#777777", vjust = 0),
+          axis.title = element_text(size = rel(.9), hjust = 0.95, face = "italic"),
+          panel.grid.major = element_line(size = rel(.1), color = "#000000"),
+          panel.grid.minor = element_line(size = rel(.05), color = "#000000"),
+          legend.position = "none")
 }
