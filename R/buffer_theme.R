@@ -30,5 +30,7 @@ buffer_theme <- function() {
           plot.caption = element_text(color = "#777777", vjust = 0),
           axis.title = element_text(size = rel(.9), hjust = 0.95, face = "italic"),
           panel.grid.major = element_line(size = rel(.1), color = "#000000"),
-          panel.grid.minor = element_line(size = rel(.05), color = "#000000"))
+          panel.grid.minor = element_line(size = rel(.05), color = "#000000"),
+          plot.background = element_rect(fill = 'grey', color = 'grey'),
+          panel.background = element_rect(fill = 'grey', color = 'grey'))
 }
