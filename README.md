@@ -51,5 +51,25 @@ You'll need your Looker credentials to be in your .Renviron. Then, you just need
 mrr_data <- get_look(4478)
 ```
 
-## Writing to Redshift
-Description coming soon...
+## Getting data from ChartMogul
+The `get_mrr_metrics` function grabs data from [ChartMogul's metrics API](https://dev.chartmogul.com/reference#introduction-metrics-api). You will need to add your ChartMogul API token and secret to your .Renviron file to use this function.
+
+```
+# add API credentials
+Sys.setenv(CHARTMOGUL_API_TOKEN = token)
+Sys.setenv(CHARTMOGUL_API_SECRET = secret)
+```
+
+There are several useful metrics we can collect from this API. We can retrieve [all key MRR metrics](https://dev.chartmogul.com/reference#retrieve-all-key-metrics) by setting `metric = "all"`. These include MRR, ARR, average revenue per account (ARPA), number of customers, LTV, the MRR churn rate, and the customer churn rate for each date. Here is an example.
+
+```
+# get key metrics
+all <- get_mrr_metrics(metric = "all", start_date = "2019-01-01", end_date = "2019-06-01", interval = "day")
+```
+
+The MRR metrics include all of the MRR movements (new, reactivation, expansion, contraction, and churn).
+
+```
+# get mrr metrics
+mrr <- get_mrr_metrics(metric = "mrr", start_date = "2019-01-01", end_date = "2019-06-01", interval = "day")
+```
