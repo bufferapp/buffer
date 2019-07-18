@@ -1,7 +1,7 @@
 #' Return data from a Look
 #'
 #' \code{get_mrr_metrics(metric = "all", start_date = "2019-01-01", end_date = "2019-03-01")} returns a data frame with results.
-#' @param metric The endpoint that specifies the type of metric, e.g. all, mrr, customers, ltv, customer-churn-rate, mrr-churn-rate
+#' @param metric The endpoint that specifies the type of metric, e.g. all, mrr, customer-count, ltv, customer-churn-rate, mrr-churn-rate
 #' @param start_date The start date of the required period of data. An ISO-8601 formatted date, e.g. 2015-05-12.
 #' @param end_date The end date of the required period of data. An ISO-8601 formatted date, e.g. 2015-05-12.
 #' #' @param interval One of day, week, or month (default).

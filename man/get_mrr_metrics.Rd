@@ -7,7 +7,7 @@
 get_mrr_metrics(metric = "all", start_date, end_date, interval)
 }
 \arguments{
-\item{metric}{The endpoint that specifies the type of metric, e.g. all, mrr, customers, ltv, customer-churn-rate, mrr-churn-rate}
+\item{metric}{The endpoint that specifies the type of metric, e.g. all, mrr, customer-count, ltv, customer-churn-rate, mrr-churn-rate}
 
 \item{start_date}{The start date of the required period of data. An ISO-8601 formatted date, e.g. 2015-05-12.}
 
