@@ -13,7 +13,7 @@
 #' df <- get_mrr_metrics(metric = "all", start_date = "2019-01-01", end_date = "2019-03-01", interval = "day")
 
 
-get_mrr_metrics <- function(metric = "all", start_date, end_date, interval = "month") {
+get_mrr_metrics <- function(metric = "all", start_date, end_date, interval = "month", plans = NULL) {
 
   require(httr)
   require(jsonlite)
@@ -39,7 +39,8 @@ get_mrr_metrics <- function(metric = "all", start_date, end_date, interval = "mo
   r <- GET(base_url,
            query = list(`start-date` = start_date,
                         `end-date` = end_date,
-                        `interval` = interval),
+                        `interval` = interval,
+                        `plans` = plans),
            authenticate(token, secret))
 
   stop_for_status(r)
@@ -54,5 +55,6 @@ get_mrr_metrics <- function(metric = "all", start_date, end_date, interval = "mo
 mrr <- get_mrr_metrics(metric = "mrr",
                        start_date = "2019-04-01",
                        end_date = "2019-06-01",
-                       interval = "day"
+                       interval = "day",
+                       plans = "Pro8 v1 - Monthly"
                        )

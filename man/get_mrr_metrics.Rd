@@ -2,17 +2,21 @@
 % Please edit documentation in R/get_mrr_metrics.R
 \name{get_mrr_metrics}
 \alias{get_mrr_metrics}
-\title{Return data from a Look}
+\title{Return data from ChartMogul}
 \usage{
-get_mrr_metrics(metric = "all", start_date, end_date, interval)
+get_mrr_metrics(metric = "all", start_date, end_date,
+  interval = "month", plans = NULL)
 }
 \arguments{
 \item{metric}{The endpoint that specifies the type of metric, e.g. all, mrr, customer-count, ltv, customer-churn-rate, mrr-churn-rate}
 
 \item{start_date}{The start date of the required period of data. An ISO-8601 formatted date, e.g. 2015-05-12.}
 
-\item{end_date}{The end date of the required period of data. An ISO-8601 formatted date, e.g. 2015-05-12.
-#' @param interval One of day, week, or month (default).}
+\item{end_date}{The end date of the required period of data. An ISO-8601 formatted date, e.g. 2015-05-12.}
+
+\item{interval}{One of day, week, or month (default).}
+
+\item{plans}{A comma-separated list of plan names (as configured in your ChartMogul account) to filter the results to. Note that spaces must be url-encoded and the names are case-sensitive, e.g. Silver%20plan,Gold%20plan,Enterprise%20plan.}
 }
 \value{
 A dataframe containing data from ChartMogul.
