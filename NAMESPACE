@@ -2,6 +2,7 @@
 
 export(buffer_theme)
 export(explain_prop_test)
+export(get_customer_mrr_events)
 export(get_forecast)
 export(get_look)
 export(get_mrr_metrics)
