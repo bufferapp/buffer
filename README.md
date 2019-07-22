@@ -69,7 +69,15 @@ all <- get_mrr_metrics(metric = "all", start_date = "2019-01-01", end_date = "20
 
 The MRR metrics include all of the MRR movements (new, reactivation, expansion, contraction, and churn).
 
-```
+```{r}
 # get mrr metrics
 mrr <- get_mrr_metrics(metric = "mrr", start_date = "2019-01-01", end_date = "2019-06-01", interval = "day")
+```
+
+## Get Customer MRR Events
+The `get_customer_mrr_events` function returns a dataframe of activities for a given customer. It only returns the events of a single customer, and the ChartMogul UUID must be used.
+
+```{r}
+# get mrr events
+activities <- get_customer_mrr_events("cus_b8eb4d54-687a-11e9-a881-17e8291a772a")
 ```
