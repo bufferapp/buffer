@@ -5,4 +5,6 @@
 .html
 .Rmd
 .Rbuildignore
+.Renviron
+.env
 *.Rproj
