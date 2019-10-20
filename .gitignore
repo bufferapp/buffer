@@ -4,3 +4,5 @@
 .Ruserdata
 .html
 .Rmd
+.Rbuildignore
+*.Rproj

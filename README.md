@@ -11,7 +11,7 @@ install.packages("devtools")
 Then, use the `install_github()` function to install the `buffer` package.
 
 ```
-install_github("jwinternheimer/buffer")
+devtools::install_github("jwinternheimer/buffer")
 ```
 
 ## Querying Redshift
