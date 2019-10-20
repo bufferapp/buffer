@@ -43,4 +43,3 @@ get_customer_mrr_events <- function(uuid) {
   results_df
 }
 
-# activities <- get_customer_mrr_events("cus_b8eb4d54-687a-11e9-a881-17e8291a772a")

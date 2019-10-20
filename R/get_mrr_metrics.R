@@ -51,10 +51,3 @@ get_mrr_metrics <- function(metric = "all", start_date, end_date, interval = "mo
 
   results_df
 }
-
-mrr <- get_mrr_metrics(metric = "mrr",
-                       start_date = "2019-04-01",
-                       end_date = "2019-06-01",
-                       interval = "day",
-                       plans = "Pro8 v1 - Monthly"
-                       )
