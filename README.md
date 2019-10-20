@@ -1,5 +1,5 @@
-# The unofficial Buffer R package
-The `buffer` package is meant to help abstract away common operations like reading and writing data to Redshift. It helps us do data better and more efficiently.
+# The Buffer R package
+The `buffer` package is meant to help abstract away common operations like retreiving data from tools like Redshift and ChartMogul. It helps us do data better and more efficiently.
 
 ## Getting Started
 To download the `buffer` package, you'll need to install the [devtools](https://www.rstudio.com/products/rpackages/devtools/) package.
