@@ -5,8 +5,7 @@
 #' @param start_date The start date of the required period of data. An ISO-8601 formatted date, e.g. 2015-05-12.
 #' @param end_date The end date of the required period of data. An ISO-8601 formatted date, e.g. 2015-05-12.
 #' @param interval One of day, week, or month (default).
-#' @param plans A comma-separated list of plan names (as configured in your ChartMogul account) to filter the results to. Note that spaces must be url-encoded and the names are case-sensitive, e.g. Silver%20plan,Gold%20plan,Enterprise%20plan.
-#' @return A dataframe containing data from ChartMogul.
+#' @param plans A comma-separated list of plan names as configured in your ChartMogul account to filter the results to. Note that spaces must be url-encoded and the names are case-sensitive.
 #' @keywords chartmogul
 #' @export
 #' @examples

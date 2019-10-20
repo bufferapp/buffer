@@ -16,10 +16,7 @@ get_mrr_metrics(metric = "all", start_date, end_date,
 
 \item{interval}{One of day, week, or month (default).}
 
-\item{plans}{A comma-separated list of plan names (as configured in your ChartMogul account) to filter the results to. Note that spaces must be url-encoded and the names are case-sensitive, e.g. Silver%20plan,Gold%20plan,Enterprise%20plan.}
-}
-\value{
-A dataframe containing data from ChartMogul.
+\item{plans}{A comma-separated list of plan names as configured in your ChartMogul account to filter the results to. Note that spaces must be url-encoded and the names are case-sensitive.}
 }
 \description{
 \code{get_mrr_metrics(metric = "all", start_date = "2019-01-01", end_date = "2019-03-01")} returns a data frame with results.
