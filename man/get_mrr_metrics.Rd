@@ -4,8 +4,13 @@
 \alias{get_mrr_metrics}
 \title{Return data from ChartMogul}
 \usage{
-get_mrr_metrics(metric = "all", start_date, end_date,
-  interval = "month", plans = NULL)
+get_mrr_metrics(
+  metric = "all",
+  start_date,
+  end_date,
+  interval = "month",
+  plans = NULL
+)
 }
 \arguments{
 \item{metric}{The endpoint that specifies the type of metric, e.g. all, mrr, customer-count, ltv, customer-churn-rate, mrr-churn-rate}
