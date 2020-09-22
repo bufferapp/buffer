@@ -1,20 +1,18 @@
 Package: buffer
 Type: Package
 Title: An internal package to help Buffer do data better.
-Version: 0.1.0
+Version: 0.1.1
 Author: Julian Winternheimer
 Maintainer: Julian Winternheimer <julianwinternheimer@gmail.com>
-Description: This package lets you connect to Redshift and get data from Looker.
+Description: This package lets you do useful things sometimes.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 Imports:
     dplyr,
     DBI,
-    RPostgreSQL,
+    bigrquery,
     ggplot2,
     tidyr,
-    httr,
-    aws.s3,
-    RPostgres
-RoxygenNote: 6.1.1
+    httr
+RoxygenNote: 7.0.2
