@@ -11,7 +11,7 @@ install.packages("devtools")
 Then, use the `install_github()` function to install the `buffer` package.
 
 ```
-devtools::install_github("buffer/buffer")
+devtools::install_github("bufferapp/buffer")
 ```
 
 ## Querying BigQuery
