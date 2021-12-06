@@ -1,5 +1,5 @@
 # The Buffer R package
-The `buffer` package is meant to help abstract away common operations like retreiving data from tools like Redshift and ChartMogul. It helps us do data better and more efficiently.
+The `buffer` package is an internal R package whose purpose is to abstract common operations like reading and writing data from Buffer's data warehouses. 
 
 ## Getting Started
 To download the `buffer` package, you'll need to install the [devtools](https://www.rstudio.com/products/rpackages/devtools/) package.
@@ -11,45 +11,45 @@ install.packages("devtools")
 Then, use the `install_github()` function to install the `buffer` package.
 
 ```
-devtools::install_github("jwinternheimer/buffer")
+devtools::install_github("buffer/buffer")
 ```
 
-## Querying Redshift
+## Querying BigQuery
 To query Redshift, you'll first need to make sure that you have your environment variables set in your .Renviron. Your .Renviron file might look something like this.
 
 ```
-REDSHIFT_DB_NAME=xxxxxxxxxxxxxxxxxxx
-REDSHIFT_USER=xxxxxxxxxxxxxxxxxxx
-REDSHIFT_ENDPOINT=xxxxxxxxxxxxxxxxxxx.us-east-1.redshift.amazonaws.com
-REDSHIFT_PASSWORD=xxxxxxxxxxxxxxxxxxx
-REDSHIFT_DB_PORT=xxxxxxxxxxxxxxxxxxx
-REDSHIFT_COPY_S3_ROOT=xxxxxxxxxxxxxxxxxxx
-LOOKER_API3_CLIENT_ID=xxxxxxxxxxxxxxxxxxx
-LOOKER_API3_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxx
+CHARTMOGUL_API_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+CHARTMOGUL_API_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+MIXPANEL_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+MIXPANEL_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+MIXPANEL_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-Once these are set, you can create a connection with the `redshift_connect()` function. To query the `users` table, you can run these lines.
+To set an environment variable, use the `Sys.setenv()` function.
 
 ```
-# establish redshift connection
-con <- redshift_connect()
+Sys.setenv(MIXPANEL_KEY = "examplekeythatyoulluse"
+```
 
+Once these are set, you can connect to BigQuery with the `bq_connect()` function. It may prompt you to authenticate with your Google account.
+
+```
+# create connection
+con <- bq_connect()
+```
+
+You'll then be able to run SQL queries from R, like so:
+
+```
 # define query
-users_query <- "select * from dbt.users limit 10"
+sql <- "select * from dbt_buffer.buffer_users limit 10"
 
-# query redshift
-users <- query_db(query = users_query, connection = con)
+# run query
+users <- bq_query(con, sql)
 ```
 
-And voila!
+Et voila!
 
-## Getting data from Looker
-You'll need your Looker credentials to be in your .Renviron. Then, you just need the number of a saved look.
-
-```
-# get mrr data
-mrr_data <- get_look(4478)
-```
 
 ## Getting data from ChartMogul
 The `get_mrr_metrics` function grabs data from [ChartMogul's metrics API](https://dev.chartmogul.com/reference#introduction-metrics-api). You will need to add your ChartMogul API token and secret to your .Renviron file to use this function.
@@ -81,3 +81,16 @@ The `get_customer_mrr_events` function returns a dataframe of activities for a g
 # get mrr events
 activities <- get_customer_mrr_events("cus_b8eb4d54-687a-11e9-a881-17e8291a772a")
 ```
+
+## Plotting with `buffplot()`
+The `buffplot()` function is a wrapper around the `ggplot()` function that does a couple things. It sets the plot's theme to `buffer_theme` and makes the default color palette colorblind-friendly.
+
+```
+data(mtcars)
+
+# plot
+buffplot(mtcars, aes(x = wt, y = mpg, color = as.factor(gear))) + 
+    geom_point() + 
+    labs(x = "Weight", y = "MPG", color = "Gear")
+```
+![](https://i.imgur.com/zfGmB3Y.png)

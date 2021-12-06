@@ -24,6 +24,8 @@
 #'
 #' @export
 buffer_theme <- function() {
+
+  # create theme
   theme_minimal(base_family = "Roboto Condensed") +
     theme(plot.title = element_text(size = rel(1.5), face = "bold"),
           plot.subtitle = element_text(size = rel(1.1)),

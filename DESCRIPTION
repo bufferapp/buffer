@@ -15,4 +15,4 @@ Imports:
     ggplot2,
     tidyr,
     httr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.2
