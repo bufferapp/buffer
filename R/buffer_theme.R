@@ -26,13 +26,8 @@
 buffer_theme <- function() {
 
   # create theme
-  theme_minimal(base_family = "Roboto Condensed") +
-    theme(plot.title = element_text(size = rel(1.5), face = "bold"),
-          plot.subtitle = element_text(size = rel(1.1)),
-          plot.caption = element_text(color = "#777777", vjust = 0),
-          axis.title = element_text(size = rel(.9), hjust = 0.95, face = "italic"),
-          panel.grid.major = element_line(size = rel(.1), color = "#000000"),
-          panel.grid.minor = element_line(size = rel(.05), color = "#000000"),
-          plot.background = element_rect(fill = '#F5F5F5', color = '#F5F5F5'),
-          panel.background = element_rect(fill = '#F5F5F5', color = '#F5F5F5'))
+  theme_wsj(base_family = "Roboto Condensed", base_size = 8, color = "gray") +
+    theme(axis.title = element_text(size = rel(.9)),
+          plot.title = element_text(vjust = 3.5),
+          plot.subtitle = element_text(vjust = 3.5))
 }
