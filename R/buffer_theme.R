@@ -26,8 +26,8 @@
 buffer_theme <- function() {
 
   # create theme
-  theme_wsj(base_family = "Roboto Condensed", base_size = 8, color = "gray") +
-    theme(axis.title = element_text(size = rel(.9)),
-          plot.title = element_text(vjust = 3.5),
-          plot.subtitle = element_text(vjust = 3.5))
+  theme_wsj(base_family = "Roboto Condensed", base_size = 10, color = "gray") +
+    theme(axis.title = element_text(size = 12),
+          plot.title = element_text(size = 20),
+          plot.subtitle = element_text(size = 14))
 }
